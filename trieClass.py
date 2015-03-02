@@ -83,12 +83,12 @@ class MyTrieNode:
         ac_words = []
         wordLen = len(w)
         if wordLen == 0:
-            return 0
+            return ac_words
 
         for i in range(0,wordLen):
             if w[i] not in self.next:
-                return 0
-            else:
+                return ac_words
+            elif w[i] in self.next:
                 self = self.next[w[i]]
 
         self.searchTree(ac_words)
@@ -96,24 +96,23 @@ class MyTrieNode:
     
             
 
-#if (__name__ == '__main__'):
-#    t = MyTrieNode(True)
-#    lst1=['test','testament','testing','ping','pin','pink','pine','pint','testing','pinetree']
-#    
-#    for w in lst1:
-#        t.addWord(w)
-#
-#    j = t.lookupWord('testy') # should return 0
-#    j2 = t.lookupWord('telltale') # should return 0
-#    j3 = t.lookupWord ('testing') # should return 2
-#    print(j, j2 ,j3)
-#
-#    lst3 = t.autoComplete('pi')
-#    print('Completions for \"pi\" are : ')
-#    print(lst3)
-#    
-#    lst4 = t.autoComplete('tes')
-#    print('Completions for \"tes\" are : ')
-#    print(lst4)
+if (__name__ == '__main__'):
+    t = MyTrieNode(True)
+    lst1=['test','testament','testing','ping','pin','pink','pine','pint','testing','pinetree']
+    
+    for w in lst1:
+        t.addWord(w)
 
+    j = t.lookupWord('testy') # should return 0
+    j2 = t.lookupWord('telltale') # should return 0
+    j3 = t.lookupWord ('testing') # should return 2
+    print(j, j2 ,j3)
+
+    lst3 = t.autoComplete('pi')
+    print('Completions for \"pi\" are : ')
+    print(lst3)
+    
+    lst4 = t.autoComplete('tes')
+    print('Completions for \"tes\" are : ')
+    print(lst4)
      
